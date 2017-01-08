@@ -57,6 +57,27 @@
     <Compile Include="Account.cs">
       <DependentUpon>Recipe5.tt</DependentUpon>
     </Compile>
+    <Compile Include="Address.cs">
+      <DependentUpon>Agent.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Agent.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agent.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Agent.cs">
+      <DependentUpon>Agent.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Agent.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agent.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agent.tt</DependentUpon>
+    </Compile>
     <Compile Include="Album.cs">
       <DependentUpon>Recipe3.tt</DependentUpon>
     </Compile>
@@ -74,6 +95,9 @@
       <DependentUpon>Recipe2.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDBContext.cs" />
+    <Compile Include="Name.cs">
+      <DependentUpon>Agent.tt</DependentUpon>
+    </Compile>
     <Compile Include="OrderItem.cs">
       <DependentUpon>Recipe4.tt</DependentUpon>
     </Compile>
@@ -152,6 +176,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Agent.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Agent.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Agent.edmx.diagram">
+      <DependentUpon>Agent.edmx</DependentUpon>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
     <EntityDeploy Include="Recipe2.edmx">
@@ -187,6 +218,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Agent.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Agent.edmx</DependentUpon>
+      <LastGenOutput>Agent.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Agent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Agent.edmx</DependentUpon>
+      <LastGenOutput>Agent1.cs</LastGenOutput>
+    </Content>
     <Content Include="Recipe2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Recipe2.edmx</DependentUpon>

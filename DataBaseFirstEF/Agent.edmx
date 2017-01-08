@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EF6RecipesModel4.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar(max)" />
+          <Property Name="LastName" Type="varchar(max)" />
+          <Property Name="Address1" Type="varchar(max)" />
+          <Property Name="Address2" Type="varchar(max)" />
+          <Property Name="City" Type="varchar(max)" />
+          <Property Name="State" Type="varchar(max)" />
+          <Property Name="ZipCode" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="EF6RecipesModel4StoreContainer">
+          <EntitySet Name="Agent" EntityType="Self.Agent" Schema="Chapter2" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EF6RecipesModel4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="EF6RecipesModel4.Name" Nullable="false" />
+          <Property Name="Address" Type="EF6RecipesModel4.Address" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EF6RecipesEntitiesAgent" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agents" EntityType="Self.Agent" />
+        </EntityContainer>
+        <ComplexType Name="Name">
+          <Property Type="String" Name="FirstName" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="Address" >
+          <Property Type="String" Name="State" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZipCode" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address1" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address2" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EF6RecipesModel4StoreContainer" CdmEntityContainer="EF6RecipesEntitiesAgent">
+          <EntitySetMapping Name="Agents">
+            <EntityTypeMapping TypeName="EF6RecipesModel4.Agent">
+              <MappingFragment StoreEntitySet="Agent">
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ComplexProperty Name="Name">
+                  <ScalarProperty Name="LastName" ColumnName="LastName" />
+                  <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                </ComplexProperty>
+                <ComplexProperty Name="Address">
+                  <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                  <ScalarProperty Name="State" ColumnName="State" />
+                  <ScalarProperty Name="City" ColumnName="City" />
+                  <ScalarProperty Name="Address2" ColumnName="Address2" />
+                  <ScalarProperty Name="Address1" ColumnName="Address1" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

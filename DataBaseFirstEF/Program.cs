@@ -254,6 +254,53 @@ namespace DataBaseFirstEF
             //    }
             //}
             #endregion
+
+            #region 2-12. Creating, Modifying, and Mapping Complex Types
+            /*
+                1. A property whose type is a complex type cannot be null
+                2. Occasionally, when the value of a complex type property is unimportant
+                   for a particular operation, you may need to create a dummy value for the property so that it has some nonnull value.
+                3. When you modify any field in complex type property, the property is marked as changed by Entity Framework,
+                   and an update statement will be generated that will update all of the fields of the complex type property
+            */
+            //using (var context = new EF6RecipesEntitiesAgent())
+            //{
+            //    var name = new Name { FirstName = "Robin", LastName = "Rosen" };
+            //    var name2 = new Name { FirstName = "Alex", LastName = "St. James" };
+            //    var address1 = new Address
+            //    {
+            //        Address1 = "510 N. Grant",
+            //        Address2 = "Apt. 8",
+            //        City = "Raytown",
+            //        State = "MO",
+            //        ZipCode = "64133"
+            //    };
+            //    var address2 = new Address
+            //    {
+            //        Address1 = "222 Baker St.",
+            //        Address2 = "Apt.22B",
+            //        City = "Raytown",
+            //        State = "MO",
+            //        ZipCode = "64133"
+            //    };
+            //    context.Agents.Add(new Agent { Address = address1, Name = name });
+            //    context.Agents.Add(new Agent { Address = address2, Name = name2 });
+            //    context.SaveChanges();
+            //}
+
+            //using (var context = new EF6RecipesEntitiesAgent())
+            //{
+            //    foreach (var agent in context.Agents)
+            //    {
+            //        Console.WriteLine("{0} {1}", agent.Name.FirstName, agent.Name.LastName);
+            //        Console.WriteLine("{0}", agent.Address.Address1);
+            //        Console.WriteLine("{0}", agent.Address.Address2);
+            //        Console.WriteLine("{0} {1} {2}", agent.Address.City, agent.Address.State, agent.Address.ZipCode);
+            //        Console.WriteLine("\n----------------------------------------\n");
+            //    }
+            //}
+            #endregion
+            Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
         }
     }
