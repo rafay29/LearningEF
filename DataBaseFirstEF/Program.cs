@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataBaseFirstEF.DataLayer;
+using DataBaseFirstEF.EntityLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -186,7 +188,7 @@ namespace DataBaseFirstEF
             //{
             //    context.Database.ExecuteSqlCommand(@"insert into Chapter2.Account
             //        (DeletedOn,AccountHolderID) values ('2/10/2009',1728)");
-                
+
             //    //var account = new FullTimeEmployee { AccountHolderID = 2320 };
             //    //context.Accounts.Add(account);
             //    //account = new FullTimeEmployee { AccountHolderID = 2502 };
@@ -202,6 +204,53 @@ namespace DataBaseFirstEF
             //    {
             //        Console.WriteLine("Account Id = {0}",
             //        account.AccountHolderID.ToString());
+            //    }
+            //}
+            #endregion
+
+            #region 2-10. Modeling Table per Hierarchy Inheritance
+            //using (var context = new EmployeeContext())
+            //{
+            //    var fullTimeEmployee = new FullTimeEmployee { FirstName = "Jane", LastName = "Doe", Salary = 71500M };
+            //    context.Employees.Add(fullTimeEmployee);
+
+            //    var fte = new FullTimeEmployee
+            //    {
+            //        FirstName = "John",
+            //        LastName = "Smith",
+            //        Salary = 62500M
+            //    };
+            //    context.Employees.Add(fte);
+
+            //    var hourly = new HourlyEmployee
+            //    {
+            //        FirstName = "Tom",
+            //        LastName = "Jones",
+            //        Wage = 8.75M
+            //    };
+            //    context.Employees.Add(hourly);
+            //    context.SaveChanges();
+            //}
+
+            //using (var context = new EmployeeContext())
+            //{
+            //    Console.WriteLine("--- All Employees ---");
+            //    foreach (var emp in context.Employees)
+            //    {
+            //        var fullTime = emp is FullTimeEmployee ? true : false;
+            //        Console.WriteLine("{0} {1} {2}", emp.FirstName, emp.LastName, fullTime ? "Full Time" : "Hourly");
+            //    }
+
+            //    Console.WriteLine("--- Full Time ---");
+            //    foreach (var fte in context.Employees.OfType<FullTimeEmployee>())
+            //    {
+            //        Console.WriteLine("{0} {1}", fte.FirstName, fte.LastName);
+            //    }
+
+            //    Console.WriteLine("--- Hourly ---");
+            //    foreach (var hourly in context.Employees.OfType<HourlyEmployee>())
+            //    {
+            //        Console.WriteLine("{0} {1}", hourly.FirstName, hourly.LastName);
             //    }
             //}
             #endregion
