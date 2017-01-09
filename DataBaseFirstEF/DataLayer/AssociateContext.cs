@@ -1,4 +1,4 @@
-﻿using DataBaseFirstEF.EntityLayer.Associate;
+using DataBaseFirstEF.EntityLayer.Associate;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseFirstEF.DataLayer
 {
-    public class AssociateContext:DbContext
+    public class AssociateContext:DbContext,IDisposable
     {
         public AssociateContext() : base("name=EF6RecipesConn") { }
 
