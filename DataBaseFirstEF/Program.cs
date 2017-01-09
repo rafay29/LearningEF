@@ -12,6 +12,9 @@ namespace DataBaseFirstEF
     {
         static void Main(string[] args)
         {
+
+            #region Chapter 2
+
             #region Recipe 2
             //using (var context = new EF6RecipesEntities1())
             //{
@@ -300,6 +303,17 @@ namespace DataBaseFirstEF
             //    }
             //}
             #endregion
+
+            #endregion
+
+            #region Chapter 3
+
+            #region 3-1. Querying Asynchronously
+
+            #endregion
+
+            #endregion
+
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
         }

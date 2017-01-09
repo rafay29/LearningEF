@@ -84,7 +84,10 @@
     <Compile Include="Artist.cs">
       <DependentUpon>Recipe3.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataLayer\AssociateContext.cs" />
     <Compile Include="DataLayer\EmployeeContext.cs" />
+    <Compile Include="EntityLayer\Associate\Associate.cs" />
+    <Compile Include="EntityLayer\Associate\AssociateSalary.cs" />
     <Compile Include="EntityLayer\Employee.cs" />
     <Compile Include="EntityLayer\FullTimeEmployee.cs" />
     <Compile Include="EntityLayer\HourlyEmployee.cs" />
@@ -183,7 +186,9 @@
     <None Include="Agent.edmx.diagram">
       <DependentUpon>Agent.edmx</DependentUpon>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <EntityDeploy Include="Recipe2.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
