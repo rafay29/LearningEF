@@ -1,7 +1,9 @@
 using DataBaseFirstEF.DataLayer;
 using DataBaseFirstEF.EntityLayer;
+using DataBaseFirstEF.EntityLayer.Associate;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -342,6 +344,65 @@ namespace DataBaseFirstEF
                 await conetxt.Database.ExecuteSqlCommandAsync("delete from chapter3.AssociateSalary");
                 await conetxt.Database.ExecuteSqlCommandAsync("delete from chapter3.Associate");
 
+                await Task.Delay(5000);
+            }
+        }
+
+        private static async Task LoadData()
+        {
+            using (var context = new AssociateContext())
+            {
+                // add new test data
+                Console.WriteLine("Adding Test Data");
+                Console.WriteLine("=========\n");
+
+                var assoc1 = new Associate { Name = "Janis Roberts" };
+                var assoc2 = new Associate { Name = "Kevin Hodges" };
+                var assoc3 = new Associate { Name = "Bill Jordan" };
+                var salary1 = new AssociateSalary { Salary = 39500M, SalaryDate = DateTime.Parse("8/4/09") };
+                var salary2 = new AssociateSalary
+                {
+                    Salary = 41900M,
+                    SalaryDate = DateTime.Parse("2/5/10")
+                };
+                var salary3 = new AssociateSalary
+                {
+                    Salary = 33500M,
+                    SalaryDate = DateTime.Parse("10/08/09")
+                };
+                assoc1.AssociateSalaries.Add(salary1);
+                assoc2.AssociateSalaries.Add(salary2);
+                assoc3.AssociateSalaries.Add(salary3);
+                context.Associates.Add(assoc1);
+                context.Associates.Add(assoc2);
+                context.Associates.Add(assoc3);
+
+                // update datastore asynchronoulsy
+                await context.SaveChangesAsync();
+                await Task.Delay(5000);
+            }
+
+
+
+
+        }
+
+        private static async Task RunForEachAsyncExample()
+        {
+            using (var context = new AssociateContext())
+            {
+                Console.WriteLine("Async ForEach Call");
+                Console.WriteLine("=========");
+                // leverage ForEachAsync
+                await context.Associates.Include(x => x.AssociateSalaries).ForEachAsync(x =>
+                {
+                    Console.WriteLine("Here are the salaries for Associate {0}:", x.Name);
+
+                    foreach (var salary in x.AssociateSalaries)
+                    {
+                        Console.WriteLine("\t{0}", salary.Salary);
+                    }
+                });
                 await Task.Delay(5000);
             }
         }
