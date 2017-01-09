@@ -1,4 +1,4 @@
-﻿using DataBaseFirstEF.DataLayer;
+using DataBaseFirstEF.DataLayer;
 using DataBaseFirstEF.EntityLayer;
 using System;
 using System.Collections.Generic;
@@ -317,5 +317,34 @@ namespace DataBaseFirstEF
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
         }
+
+        private static IEnumerable<char> BusyChars()
+        {
+            while (true)
+            {
+                yield return '\\';
+                yield return '|';
+                yield return '/';
+                yield return '-';
+            }
+        }
+
+        private static async Task EF6AsyncDemo() { }
+
+        private static async Task Cleanup()
+        {
+            using (var conetxt = new AssociateContext())
+            {
+                // delete previous test data
+                // execute raw sql statement asynchronoulsy
+                Console.WriteLine("Cleaning Up Previous Test Data");
+                Console.WriteLine("=========\n");
+                await conetxt.Database.ExecuteSqlCommandAsync("delete from chapter3.AssociateSalary");
+                await conetxt.Database.ExecuteSqlCommandAsync("delete from chapter3.Associate");
+
+                await Task.Delay(5000);
+            }
+        }
+
     }
 }
