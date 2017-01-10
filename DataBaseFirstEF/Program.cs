@@ -1,9 +1,11 @@
-﻿using DataBaseFirstEF.DataLayer;
+using DataBaseFirstEF.DataLayer;
 using DataBaseFirstEF.EntityLayer;
 using DataBaseFirstEF.EntityLayer.Associate;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -355,6 +357,47 @@ namespace DataBaseFirstEF
             //}
             #endregion
 
+            #region 3-3. Fetching Objects with Native SQL Statements
+            //using (var context = new StudentContext())
+            //{
+            //    // delete previous test data
+            //    context.Database.ExecuteSqlCommand("delete from chapter3.student");
+            //    // insert student data
+            //    context.Students.Add(new Student
+            //    {
+            //        FirstName = "Robert",
+            //        LastName = "Smith",
+            //        Degree = "Masters"
+            //    });
+            //    context.Students.Add(new Student
+            //    {
+            //        FirstName = "Julia",
+            //        LastName = "Kerns",
+            //        Degree = "Masters"
+            //    });
+            //    context.Students.Add(new Student
+            //    {
+            //        FirstName = "Nancy",
+            //        LastName = "Stiles",
+            //        Degree = "Doctorate"
+            //    });
+
+            //    context.SaveChanges();
+            //}
+
+            //using (var context = new StudentContext())
+            //{
+            //    string sql = "select * from Chapter3.Student where Degree = @Major";
+            //    var parameters = new DbParameter[] { new SqlParameter {ParameterName="Major",Value="Masters" } };
+            //    var students = context.Students.SqlQuery(sql,parameters);
+            //    Console.WriteLine("Students...");
+            //    foreach (var student in students)
+            //    {
+            //        Console.WriteLine("{0} {1} is working on a {2} degree", student.FirstName,student.LastName,student.Degree);
+            //    }
+            //}
+            #endregion
+
             #endregion
 
             Console.WriteLine("Press enter to continue...");
@@ -491,6 +534,5 @@ namespace DataBaseFirstEF
                 await Task.Delay(5000);
             }
         }
-
     }
 }
