@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -86,11 +86,13 @@
     </Compile>
     <Compile Include="DataLayer\AssociateContext.cs" />
     <Compile Include="DataLayer\EmployeeContext.cs" />
+    <Compile Include="DataLayer\StudentContext.cs" />
     <Compile Include="EntityLayer\Associate\Associate.cs" />
     <Compile Include="EntityLayer\Associate\AssociateSalary.cs" />
     <Compile Include="EntityLayer\Employee.cs" />
     <Compile Include="EntityLayer\FullTimeEmployee.cs" />
     <Compile Include="EntityLayer\HourlyEmployee.cs" />
+    <Compile Include="EntityLayer\Student.cs" />
     <Compile Include="Item.cs">
       <DependentUpon>Recipe4.tt</DependentUpon>
     </Compile>
