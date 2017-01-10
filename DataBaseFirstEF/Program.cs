@@ -312,17 +312,47 @@ namespace DataBaseFirstEF
             #region Chapter 3
 
             #region 3-1. Querying Asynchronously
-            var asyncTask = EF6AsyncDemo();
-            foreach (var c in BusyChars())
-            {
-                if (asyncTask.IsCompleted)
-                {
-                    break;
-                }
-                Console.Write(c);
-                Console.CursorLeft = 0;
-                Thread.Sleep(100);
-            }
+            //var asyncTask = EF6AsyncDemo();
+            //foreach (var c in BusyChars())
+            //{
+            //    if (asyncTask.IsCompleted)
+            //    {
+            //        break;
+            //    }
+            //    Console.Write(c);
+            //    Console.CursorLeft = 0;
+            //    Thread.Sleep(100);
+            //}
+            #endregion
+
+            #region 3-2. Updating with Native SQL Statements
+            // ExecuteSqlCommand enables us to query the underlying database table directly
+            //using (var context = new EF6RecipesEntitiesPayment())
+            //{
+            //    // delete previous test data
+            //    context.Database.ExecuteSqlCommand("delete from chapter3.Payment");
+            //}
+            //using (var context = new EF6RecipesEntitiesPayment())
+            //{
+
+            //    // insert two rows of data
+            //    // note how using the following syntax with parameter place holders of @p0 and @p1
+            //    // automatically create the ADO.NET SqlParameters object for you
+            //    var sql = @"insert into chapter3.payment(Amount,Vendor) values(@p0,@p1)";
+            //    var rowCount = context.Database.ExecuteSqlCommand(sql, 99.97M, "Ace Plumbing");
+            //    rowCount += context.Database.ExecuteSqlCommand(sql, 43.83M, "Joe's Trash Service");
+            //    Console.WriteLine("{0} rows inserted", rowCount);
+            //}
+            //using (var context = new EF6RecipesEntitiesPayment())
+            //{
+            //    // retrieve and materialize data using
+            //    Console.WriteLine("Payments");
+            //    Console.WriteLine("========");
+            //    foreach (var payment in context.Payments)
+            //    {
+            //        Console.WriteLine("Paid {0} to {1}", payment.Amount, payment.Vendor);
+            //    }
+            //}
             #endregion
 
             #endregion

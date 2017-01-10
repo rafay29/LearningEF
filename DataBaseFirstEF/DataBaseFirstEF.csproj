@@ -107,6 +107,24 @@
     <Compile Include="OrderT.cs">
       <DependentUpon>Recipe4.tt</DependentUpon>
     </Compile>
+    <Compile Include="Payment.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Payment.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>Payment.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Payment.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Payment1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Payment.tt</DependentUpon>
+    </Compile>
     <Compile Include="Poem.cs">
       <DependentUpon>Recipe2.tt</DependentUpon>
     </Compile>
@@ -194,6 +212,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Recipe2.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Payment.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Payment.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Payment.edmx.diagram">
+      <DependentUpon>Payment.edmx</DependentUpon>
+    </None>
     <None Include="Recipe2.edmx.diagram">
       <DependentUpon>Recipe2.edmx</DependentUpon>
     </None>
@@ -232,6 +257,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Agent.edmx</DependentUpon>
       <LastGenOutput>Agent1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Payment.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Payment.edmx</DependentUpon>
+      <LastGenOutput>Payment.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Payment.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Payment.edmx</DependentUpon>
+      <LastGenOutput>Payment1.cs</LastGenOutput>
     </Content>
     <Content Include="Recipe2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
