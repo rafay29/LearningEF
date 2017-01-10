@@ -1,4 +1,4 @@
-using DataBaseFirstEF.DataLayer;
+﻿using DataBaseFirstEF.DataLayer;
 using DataBaseFirstEF.EntityLayer;
 using DataBaseFirstEF.EntityLayer.Associate;
 using System;
@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DataBaseFirstEF
@@ -311,7 +312,17 @@ namespace DataBaseFirstEF
             #region Chapter 3
 
             #region 3-1. Querying Asynchronously
-
+            var asyncTask = EF6AsyncDemo();
+            foreach (var c in BusyChars())
+            {
+                if (asyncTask.IsCompleted)
+                {
+                    break;
+                }
+                Console.Write(c);
+                Console.CursorLeft = 0;
+                Thread.Sleep(100);
+            }
             #endregion
 
             #endregion
@@ -331,7 +342,14 @@ namespace DataBaseFirstEF
             }
         }
 
-        private static async Task EF6AsyncDemo() { }
+        private static async Task EF6AsyncDemo()
+        {
+            await Cleanup();
+            await LoadData();
+            await RunForEachAsyncExample();
+            await RunToListAsyncExampe();
+            await RunSingleOrDefaultAsyncExampe();
+        }
 
         private static async Task Cleanup()
         {
@@ -403,6 +421,43 @@ namespace DataBaseFirstEF
                         Console.WriteLine("\t{0}", salary.Salary);
                     }
                 });
+                await Task.Delay(5000);
+            }
+        }
+
+        private static async Task RunToListAsyncExampe()
+        {
+            using (var context = new AssociateContext())
+            {
+                Console.WriteLine("\n\nAsync ToList Call");
+                Console.WriteLine("=========");
+                // leverage ToListAsync
+
+                var associates = await context.Associates.Include(x => x.AssociateSalaries).OrderBy(x => x.Name).ToListAsync();
+                foreach (var associate in associates)
+                {
+                    Console.WriteLine("Here are the salaries for Associate {0}:", associate.Name);
+                    foreach (var salaryInfo in associate.AssociateSalaries)
+                    {
+                        Console.WriteLine("\t{0}", salaryInfo.Salary);
+                    }
+                }
+                await Task.Delay(5000);
+            }
+        }
+
+        private static async Task RunSingleOrDefaultAsyncExampe()
+        {
+            using (var context = new AssociateContext())
+            {
+                Console.WriteLine("\n\nAsync SingleOrDefault Call");
+                Console.WriteLine("=========");
+                var associate = await context.Associates.Include(x => x.AssociateSalaries).OrderBy(x => x.Name).FirstOrDefaultAsync(y => y.Name == "Kevin Hodges");
+                Console.WriteLine("Here are the salaries for Associate {0}:", associate.Name);
+                foreach (var salaryInfo in associate.AssociateSalaries)
+                {
+                    Console.WriteLine("\t{0}", salaryInfo.Salary);
+                }
                 await Task.Delay(5000);
             }
         }
